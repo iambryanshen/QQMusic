@@ -30,3 +30,22 @@ class MusicModel: NSObject {
     
     override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 }
+
+extension MusicModel {
+    
+    class func loadMusicModel() -> [MusicModel] {
+        
+        guard let urlPath = Bundle.main.url(forResource: "Musics", withExtension: "plist") else {
+            return [MusicModel]()
+        }
+        
+        let musicArray = NSArray(contentsOf: urlPath) as! [[String: String]]
+        
+        var musics: [MusicModel] = [MusicModel]()
+        for music in musicArray {
+            musics.append(MusicModel(dict: music))
+        }
+        
+        return musics
+    }
+}

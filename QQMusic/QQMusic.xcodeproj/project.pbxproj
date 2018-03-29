@@ -48,10 +48,14 @@
 		D351FC20206B1D1400801CA4 /* 12309111.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D351FBF7206B1D1400801CA4 /* 12309111.mp3 */; };
 		D351FC21206B1D1400801CA4 /* 339744.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D351FBF8206B1D1400801CA4 /* 339744.mp3 */; };
 		D351FC22206B1D1400801CA4 /* Musics.plist in Resources */ = {isa = PBXBuildFile; fileRef = D351FBF9206B1D1400801CA4 /* Musics.plist */; };
-		D351FC25206B1D2F00801CA4 /* PlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D351FC23206B1D2F00801CA4 /* PlayingViewController.swift */; };
-		D351FC28206B2AC200801CA4 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D351FC27206B2AC200801CA4 /* MusicModel.swift */; };
-		D351FC2A206B2E4100801CA4 /* SFMusicTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D351FC29206B2E4100801CA4 /* SFMusicTool.swift */; };
-		D351FC2D206B3CF300801CA4 /* CALayer-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D351FC2C206B3CF300801CA4 /* CALayer-Extension.swift */; };
+		D352F796206D105500975EC5 /* QQDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D352F795206D105500975EC5 /* QQDetailVM.swift */; };
+		D36FAE98206CFC9F00906273 /* PlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36FAE94206CFC9F00906273 /* PlayingViewController.swift */; };
+		D36FAE99206CFC9F00906273 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36FAE96206CFC9F00906273 /* MusicModel.swift */; };
+		D36FAE9F206CFCAC00906273 /* CALayer-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36FAE9C206CFCAC00906273 /* CALayer-Extension.swift */; };
+		D36FAEA0206CFCAC00906273 /* SFMusicTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36FAE9E206CFCAC00906273 /* SFMusicTool.swift */; };
+		D36FAEA5206CFD3B00906273 /* QQListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36FAEA4206CFD3B00906273 /* QQListTableViewController.swift */; };
+		D36FAEA8206D023E00906273 /* QQListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36FAEA6206D023E00906273 /* QQListCell.swift */; };
+		D36FAEA9206D023E00906273 /* QQListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D36FAEA7206D023E00906273 /* QQListCell.xib */; };
 		D3B4FE5B206B10EB0076D341 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FE5A206B10EB0076D341 /* AppDelegate.swift */; };
 		D3B4FE60206B10EB0076D341 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3B4FE5E206B10EB0076D341 /* Main.storyboard */; };
 		D3B4FE62206B10EB0076D341 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3B4FE61206B10EB0076D341 /* Assets.xcassets */; };
@@ -100,10 +104,14 @@
 		D351FBF7206B1D1400801CA4 /* 12309111.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 12309111.mp3; sourceTree = "<group>"; };
 		D351FBF8206B1D1400801CA4 /* 339744.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 339744.mp3; sourceTree = "<group>"; };
 		D351FBF9206B1D1400801CA4 /* Musics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Musics.plist; sourceTree = "<group>"; };
-		D351FC23206B1D2F00801CA4 /* PlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingViewController.swift; sourceTree = "<group>"; };
-		D351FC27206B2AC200801CA4 /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
-		D351FC29206B2E4100801CA4 /* SFMusicTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFMusicTool.swift; sourceTree = "<group>"; };
-		D351FC2C206B3CF300801CA4 /* CALayer-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer-Extension.swift"; sourceTree = "<group>"; };
+		D352F795206D105500975EC5 /* QQDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QQDetailVM.swift; sourceTree = "<group>"; };
+		D36FAE94206CFC9F00906273 /* PlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayingViewController.swift; sourceTree = "<group>"; };
+		D36FAE96206CFC9F00906273 /* MusicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
+		D36FAE9C206CFCAC00906273 /* CALayer-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer-Extension.swift"; sourceTree = "<group>"; };
+		D36FAE9E206CFCAC00906273 /* SFMusicTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFMusicTool.swift; sourceTree = "<group>"; };
+		D36FAEA4206CFD3B00906273 /* QQListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QQListTableViewController.swift; sourceTree = "<group>"; };
+		D36FAEA6206D023E00906273 /* QQListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QQListCell.swift; sourceTree = "<group>"; };
+		D36FAEA7206D023E00906273 /* QQListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QQListCell.xib; sourceTree = "<group>"; };
 		D3B4FE57206B10EB0076D341 /* QQMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QQMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B4FE5A206B10EB0076D341 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3B4FE5F206B10EB0076D341 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,44 +134,10 @@
 		D351FBC8206B1CFF00801CA4 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				D351FC2B206B3CE000801CA4 /* Extension */,
-				D351FBC9206B1CFF00801CA4 /* Controller */,
-				D351FBCA206B1CFF00801CA4 /* Model */,
-				D351FBCB206B1CFF00801CA4 /* View */,
-				D351FBCC206B1CFF00801CA4 /* Tool */,
+				D36FAE91206CFC9F00906273 /* QQList */,
+				D36FAE92206CFC9F00906273 /* QQDetail */,
 			);
 			path = Module;
-			sourceTree = "<group>";
-		};
-		D351FBC9206B1CFF00801CA4 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				D351FC23206B1D2F00801CA4 /* PlayingViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		D351FBCA206B1CFF00801CA4 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D351FC27206B2AC200801CA4 /* MusicModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		D351FBCB206B1CFF00801CA4 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		D351FBCC206B1CFF00801CA4 /* Tool */ = {
-			isa = PBXGroup;
-			children = (
-				D351FC29206B2E4100801CA4 /* SFMusicTool.swift */,
-			);
-			path = Tool;
 			sourceTree = "<group>";
 		};
 		D351FBCD206B1D1400801CA4 /* Resources */ = {
@@ -238,12 +212,105 @@
 			path = MP3s;
 			sourceTree = "<group>";
 		};
-		D351FC2B206B3CE000801CA4 /* Extension */ = {
+		D352F794206D104000975EC5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				D351FC2C206B3CF300801CA4 /* CALayer-Extension.swift */,
+				D352F795206D105500975EC5 /* QQDetailVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D36FAE91206CFC9F00906273 /* QQList */ = {
+			isa = PBXGroup;
+			children = (
+				D36FAEA1206CFCD500906273 /* Controller */,
+				D36FAEA2206CFCD500906273 /* Model */,
+				D36FAEA3206CFCD500906273 /* View */,
+			);
+			path = QQList;
+			sourceTree = "<group>";
+		};
+		D36FAE92206CFC9F00906273 /* QQDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D352F794206D104000975EC5 /* ViewModel */,
+				D36FAE93206CFC9F00906273 /* Controller */,
+				D36FAE95206CFC9F00906273 /* Model */,
+				D36FAE97206CFC9F00906273 /* View */,
+			);
+			path = QQDetail;
+			sourceTree = "<group>";
+		};
+		D36FAE93206CFC9F00906273 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D36FAE94206CFC9F00906273 /* PlayingViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D36FAE95206CFC9F00906273 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D36FAE96206CFC9F00906273 /* MusicModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D36FAE97206CFC9F00906273 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D36FAE9A206CFCAC00906273 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				D36FAE9B206CFCAC00906273 /* Extension */,
+				D36FAE9D206CFCAC00906273 /* Tool */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		D36FAE9B206CFCAC00906273 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D36FAE9C206CFCAC00906273 /* CALayer-Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		D36FAE9D206CFCAC00906273 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				D36FAE9E206CFCAC00906273 /* SFMusicTool.swift */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		D36FAEA1206CFCD500906273 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D36FAEA4206CFD3B00906273 /* QQListTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D36FAEA2206CFCD500906273 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D36FAEA3206CFCD500906273 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D36FAEA6206D023E00906273 /* QQListCell.swift */,
+				D36FAEA7206D023E00906273 /* QQListCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D3B4FE4E206B10EB0076D341 = {
@@ -267,6 +334,7 @@
 			children = (
 				D351FBCD206B1D1400801CA4 /* Resources */,
 				D351FBC8206B1CFF00801CA4 /* Module */,
+				D36FAE9A206CFCAC00906273 /* Other */,
 				D3B4FE5A206B10EB0076D341 /* AppDelegate.swift */,
 				D3B4FE5E206B10EB0076D341 /* Main.storyboard */,
 				D3B4FE61206B10EB0076D341 /* Assets.xcassets */,
@@ -367,6 +435,7 @@
 				D351FC17206B1D1400801CA4 /* nanquan_icon@2x.jpg in Resources */,
 				D351FC03206B1D1400801CA4 /* 120125029.lrc in Resources */,
 				D351FC14206B1D1400801CA4 /* nanquan@2x.jpg in Resources */,
+				D36FAEA9206D023E00906273 /* QQListCell.xib in Resources */,
 				D351FC1F206B1D1400801CA4 /* 120125029.mp3 in Resources */,
 				D351FC1A206B1D1400801CA4 /* 235319.mp3 in Resources */,
 				D3B4FE62206B10EB0076D341 /* Assets.xcassets in Resources */,
@@ -389,11 +458,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D351FC2D206B3CF300801CA4 /* CALayer-Extension.swift in Sources */,
-				D351FC2A206B2E4100801CA4 /* SFMusicTool.swift in Sources */,
+				D36FAEA0206CFCAC00906273 /* SFMusicTool.swift in Sources */,
 				D3B4FE5B206B10EB0076D341 /* AppDelegate.swift in Sources */,
-				D351FC25206B1D2F00801CA4 /* PlayingViewController.swift in Sources */,
-				D351FC28206B2AC200801CA4 /* MusicModel.swift in Sources */,
+				D36FAE9F206CFCAC00906273 /* CALayer-Extension.swift in Sources */,
+				D352F796206D105500975EC5 /* QQDetailVM.swift in Sources */,
+				D36FAEA8206D023E00906273 /* QQListCell.swift in Sources */,
+				D36FAEA5206CFD3B00906273 /* QQListTableViewController.swift in Sources */,
+				D36FAE98206CFC9F00906273 /* PlayingViewController.swift in Sources */,
+				D36FAE99206CFC9F00906273 /* MusicModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

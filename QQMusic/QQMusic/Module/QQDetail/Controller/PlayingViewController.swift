@@ -18,6 +18,13 @@ class PlayingViewController: UIViewController {
     @IBOutlet weak var singerLabel: UILabel!
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var totalTimeLabel: UILabel!
+    @IBOutlet weak var lyricLabel: UILabel!
+    
+    // 显示歌词的背景View
+    @IBOutlet weak var lyricScrollView: UIScrollView!
+    
+    // 显示歌词的view
+    var lyricView : UIView?
     
     lazy var musics: [MusicModel] = [MusicModel]()
     
@@ -26,16 +33,22 @@ class PlayingViewController: UIViewController {
     
     /// 当前播放的音乐
     var currentMusic: MusicModel!
+}
+
+//MARK: - 系统回调方法
+extension PlayingViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setBlurView()
         setProgressSlider()
-        setIconImageView()
+        
+        // 添加歌词view
+        addLyricView()
         
         // 加载数据
-        loadMusicData()
+        musics = MusicModel.loadMusicModel()
         
         // 第一次进入播放歌曲
         currentMusic = musics[0]
@@ -46,6 +59,14 @@ class PlayingViewController: UIViewController {
         
         // 给icon添加旋转动画
         addIconAnimation()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        setIconImageView()
+        setLyricViewFrame()
+        setLyricScrollView()
     }
 }
 
@@ -161,6 +182,31 @@ extension PlayingViewController {
         progressSlider.setThumbImage(UIImage(named: "player_slider_playback_thumb"), for: UIControlState.normal)
     }
     
+    
+    /// 添加显示歌词的view
+    func addLyricView() {
+        let lyricView = UIView()
+        self.lyricView = lyricView
+        lyricView.backgroundColor = UIColor.clear
+        lyricScrollView.addSubview(lyricView)
+    }
+    
+
+    /// 设置显示歌词的view的frame
+    func setLyricViewFrame() {
+        lyricView?.frame = lyricScrollView.bounds
+        // 歌词默认不显示
+        lyricView?.frame.origin.x = lyricScrollView.bounds.width
+    }
+    
+    /// 歌词的背景scrollView的内容宽度为scrollView宽度的两倍，多出的宽度用来“容纳”显示歌词的view
+    func setLyricScrollView() {
+        lyricScrollView.contentSize = CGSize(width: lyricScrollView.bounds.width * 2, height: 0)
+        lyricScrollView.delegate = self
+        lyricScrollView.isPagingEnabled = true
+        lyricScrollView.showsHorizontalScrollIndicator = false
+    }
+    
     func setIconImageView() {
         iconImageView.layer.cornerRadius = iconImageView.bounds.width * 0.5
         iconImageView.layer.masksToBounds = true
@@ -169,20 +215,15 @@ extension PlayingViewController {
     }
 }
 
-//MARK: - 加载数据
-extension PlayingViewController {
+//MARK: - 监听歌词view滚动
+extension PlayingViewController: UIScrollViewDelegate {
     
-    func loadMusicData() {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        guard let urlPath = Bundle.main.url(forResource: "Musics", withExtension: "plist") else {
-            return
-        }
-        
-        let musicArray = NSArray(contentsOf: urlPath) as! [[String: String]]
-        
-        for music in musicArray {
-            musics.append(MusicModel(dict: music))
-        }
+        let alpha = 1 - scrollView.contentOffset.x / scrollView.bounds.width
+        lyricLabel.alpha = alpha
+        iconImageView.alpha = alpha
+        singerLabel.alpha = alpha
     }
 }
 
@@ -192,7 +233,7 @@ extension PlayingViewController {
     func startPlayMusic() {
         
         // 播放歌曲
-        guard let player = SFMusicTool.playMusic(musicName: currentMusic.filename) else {
+        guard let player = SFMusicTool.share.playMusic(musicName: currentMusic.filename) else {
             return
         }
         self.player = player
@@ -219,7 +260,6 @@ extension PlayingViewController {
         animation.duration = 30
         iconImageView.layer.add(animation, forKey: nil)
     }
-    
     
     /// 根据秒数计算得到格式为：“00:00”的字符串
     ///
@@ -251,9 +291,7 @@ extension PlayingViewController {
     @objc
     func updateMusicInfo() {
         
-        guard let currentTime = player?.currentTime else {
-            return
-        }
+        guard let currentTime = player?.currentTime else {return}
         
         currentTimeLabel.text = stringWithTime(time: currentTime)
         progressSlider.value = Float(currentTime) / Float(player!.duration)

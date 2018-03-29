@@ -6,12 +6,18 @@
 //  Copyright © 2018年 brian. All rights reserved.
 //
 
+/*
+ 负责一首歌曲的播放、暂停
+ */
+
 import UIKit
 import AVFoundation
 
 class SFMusicTool: NSObject {
     
-    static var player: AVAudioPlayer?
+    var player: AVAudioPlayer?
+    
+    static let share: SFMusicTool = SFMusicTool()
     
 }
 
@@ -20,7 +26,8 @@ extension SFMusicTool {
     /// 开始播放
     ///
     /// - Parameter musicName: 资源名称
-    class func playMusic(musicName: String) -> AVAudioPlayer? {
+    @discardableResult
+    func playMusic(musicName: String) -> AVAudioPlayer? {
         
         // 资源路径URL
         guard let url = Bundle.main.url(forResource: musicName, withExtension: nil) else {
@@ -46,12 +53,12 @@ extension SFMusicTool {
     }
     
     /// 暂停播放
-    class func pauseMusci() {
+    func pauseMusci() {
         player?.pause()
     }
     
     /// 停止播放，同时设置进度到0
-    class func stopMusic() {
+    func stopMusic() {
         player?.currentTime = 0
         player?.stop()
     }
@@ -59,7 +66,7 @@ extension SFMusicTool {
     /// 快进到指定时间
     ///
     /// - Parameter currentTime: 指定时间
-    class func setCurrentTime(currentTime: TimeInterval) {
+    func setCurrentTime(currentTime: TimeInterval) {
         player?.currentTime = currentTime
     }
 }
