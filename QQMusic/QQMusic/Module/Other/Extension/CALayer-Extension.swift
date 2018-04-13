@@ -1,9 +1,8 @@
-
 //
 //  CALayer-Extension.swift
 //  QQMusic
 //
-//  Created by brian on 2018/3/28.
+//  Created by brian on 2018/4/12.
 //  Copyright © 2018年 Brian Inc. All rights reserved.
 //
 
@@ -15,13 +14,13 @@ extension CALayer {
     func pauseAnimation() {
         let pausedTime = convertTime(CACurrentMediaTime(), from: nil)
         // 让CALayer停止运动
-        speed = 0
+        speed = 0.0
         // 让CALayer的时间停留在pausedTime这个时刻
         timeOffset = pausedTime
     }
     
     // 继续基于CALayer的核心动画
-    func startAnimation() {
+    func resumeAnimation() {
         let pauseTime = timeOffset
         // 让layer的时间继续行走
         speed = 1.0

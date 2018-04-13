@@ -2,7 +2,7 @@
 //  QQListCell.swift
 //  QQMusic
 //
-//  Created by brian on 2018/3/29.
+//  Created by brian on 2018/4/2.
 //  Copyright © 2018年 Brian Inc. All rights reserved.
 //
 
@@ -14,10 +14,10 @@ enum CellAnimationType {
 }
 
 class QQListCell: UITableViewCell {
-    
-    @IBOutlet weak var iconIV: UIImageView!
-    @IBOutlet weak var songNameLabel: UILabel!
-    @IBOutlet weak var singerNameLabel: UILabel!
+
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var songLabel: UILabel!
+    @IBOutlet weak var singerLabel: UILabel!
     
     class func qqlistCell(tableView: UITableView) -> QQListCell {
         let musicID = "musicID"
@@ -34,28 +34,22 @@ class QQListCell: UITableViewCell {
                 return
             }
             
-            iconIV.image = UIImage(named: music.icon)
-            songNameLabel.text = music.name
-            singerNameLabel.text = music.singer
+            iconImageView.image = UIImage(named: music.icon)
+            songLabel.text = music.name
+            singerLabel.text = music.singer
         }
     }
-    
-    // 重写该方法什么也不做，可以实现取消选中动画效果
-    override func setSelected(_ selected: Bool, animated: Bool) {}
-    
-    // 取消选中高亮动画效果
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {}
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         backgroundColor = UIColor.clear
         
-        iconIV.layer.contents = iconIV.bounds.width * 0.5
-        iconIV.layer.masksToBounds = true
+        iconImageView.layer.contents = iconImageView.bounds.width * 0.5
+        iconImageView.layer.masksToBounds = true
         
-        songNameLabel.textColor = UIColor.white
-        singerNameLabel.textColor = UIColor.white
+        songLabel.textColor = UIColor.white
+        singerLabel.textColor = UIColor.white
     }
     
     func animation(animationType: CellAnimationType) {
@@ -75,4 +69,10 @@ class QQListCell: UITableViewCell {
             layer.add(animation, forKey: nil)
         }
     }
+
+    // 重写该方法什么也不做，可以实现取消选中动画效果
+    override func setSelected(_ selected: Bool, animated: Bool) {}
+    
+    // 取消选中高亮动画效果
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {}
 }

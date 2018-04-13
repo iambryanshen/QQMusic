@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  QQMusic
 //
-//  Created by brian on 2018/3/28.
+//  Created by brian on 2018/4/2.
 //  Copyright © 2018年 Brian Inc. All rights reserved.
 //
 

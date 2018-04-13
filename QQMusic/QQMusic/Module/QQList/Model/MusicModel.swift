@@ -2,7 +2,7 @@
 //  MusicModel.swift
 //  QQMusic
 //
-//  Created by brian on 2018/3/28.
+//  Created by brian on 2018/4/2.
 //  Copyright © 2018年 Brian Inc. All rights reserved.
 //
 
@@ -33,6 +33,9 @@ class MusicModel: NSObject {
 
 extension MusicModel {
     
+    /// 加载歌曲数据
+    ///
+    /// - Returns: 歌曲数据模型数组
     class func loadMusicModel() -> [MusicModel] {
         
         guard let urlPath = Bundle.main.url(forResource: "Musics", withExtension: "plist") else {

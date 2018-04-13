@@ -1,31 +1,35 @@
 //
-//  QQListTableViewController.swift
+//  QQListVC.swift
 //  QQMusic
 //
-//  Created by brian on 2018/3/29.
+//  Created by brian on 2018/4/2.
 //  Copyright © 2018年 Brian Inc. All rights reserved.
 //
 
 import UIKit
 
-class QQListTableViewController: UITableViewController {
-    
+class QQListVC: UITableViewController {
+
     var musics: [MusicModel] = [MusicModel]() {
         didSet {
             tableView.reloadData()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
+        
         musics = MusicModel.loadMusicModel()
+        
+        // 给工具类提供音乐列表，实现上一首，下一首操作
+        QQDetailVM.share.musics = musics
     }
 }
 
 //MARK: - 设置UI界面
-extension QQListTableViewController {
+extension QQListVC {
     
     func setupUI() {
         
@@ -41,7 +45,7 @@ extension QQListTableViewController {
 }
 
 // MARK: - Table view data source
-extension QQListTableViewController {
+extension QQListVC {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -57,9 +61,9 @@ extension QQListTableViewController {
 }
 
 //MARK: - Table view delegate
-extension QQListTableViewController {
+extension QQListVC {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         QQDetailVM.share.playMusic(musicModel: musics[indexPath.row])
         self.performSegue(withIdentifier: "ListToDetail", sender: nil)
     }
