@@ -273,3 +273,29 @@ extension QQDetailVC {
         navigationController?.popViewController(animated: true)
     }
 }
+
+extension QQDetailVC {
+    // 锁屏控制播放，暂停，上一首，下一首
+    override func remoteControlReceived(with event: UIEvent?) {
+        switch event?.subtype {
+        case .remoteControlPlay?:
+            QQDetailVM.share.continuePlayMusic()
+        case .remoteControlPause?:
+            QQDetailVM.share.pausePlayMusic()
+        case .remoteControlNextTrack?:
+            QQDetailVM.share.playNextMusic()
+        case .remoteControlPreviousTrack?:
+            QQDetailVM.share.playPreviousMusic()
+        default:
+            break
+        }
+        
+        setupOnce()
+    }
+    
+    // 摇一摇下一首
+    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
+        QQDetailVM.share.playNextMusic()
+        setupOnce()
+    }
+}

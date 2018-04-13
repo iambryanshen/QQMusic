@@ -11,6 +11,7 @@
  */
 
 import UIKit
+import MediaPlayer
 
 class QQDetailVM: NSObject {
     
@@ -117,5 +118,32 @@ extension QQDetailVM {
         }
         currentIndex -= 1
         playMusic(musicModel: musics[currentIndex])
+    }
+    
+    /// 设置锁屏信息
+    func setupLockScreen() {
+        
+        // 1. 获取当前正在播放的音乐信息
+        let currentMusicModel = getCurrentMusicModel()
+        
+        // 2. 获取锁屏信息中心
+        let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
+        
+        // 3. 创建并设置锁屏信息
+        let artwork = MPMediaItemArtwork(boundsSize: CGSize.zero) { (size) -> UIImage in
+            let imageName = currentMusicModel.musicModel?.singerIcon ?? ""
+            let image = UIImage(named: imageName) ?? UIImage()
+            return image
+        }
+        let nowPlayingInfo: [String: Any] = [MPMediaItemPropertyAlbumTitle: currentMusicModel.musicModel?.name as Any,
+                                             MPMediaItemPropertyArtist:currentMusicModel.musicModel?.singer as Any,
+                                             MPMediaItemPropertyPlaybackDuration:currentMusicModel.totalTime as Any,
+                                             MPNowPlayingInfoPropertyElapsedPlaybackTime:currentMusicModel.currentTime as Any,
+                                             MPMediaItemPropertyArtwork:artwork
+                                             ]
+        nowPlayingInfoCenter.nowPlayingInfo = nowPlayingInfo
+        
+        // 4. 接收远程事件
+        UIApplication.shared.beginReceivingRemoteControlEvents()
     }
 }
