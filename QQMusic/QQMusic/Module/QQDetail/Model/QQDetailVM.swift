@@ -58,7 +58,7 @@ class QQDetailVM: NSObject {
         return musicCurrentModel
     }
     
-    /// 根据所有的歌词数据和当前播放的时间获取当前歌词对应的行数
+    /// 根据所有的歌词模型数据 和 当前播放的歌曲时间获取当前歌词模型数据和其对应的显示行数
     ///
     /// - Parameters:
     ///   - lyricModelArray: 所有的歌词模型数据

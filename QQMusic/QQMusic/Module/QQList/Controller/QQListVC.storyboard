@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FDG-h3-WSJ">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ListVC-->
+        <scene sceneID="ht8-ag-v0c">
+            <objects>
+                <tableViewController id="FDG-h3-WSJ" customClass="QQListVC" customModule="QQMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7vc-5h-ox4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="FDG-h3-WSJ" id="Pq9-QO-xFd"/>
+                            <outlet property="delegate" destination="FDG-h3-WSJ" id="caN-k5-I9l"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Qxe-Le-qmp"/>
+                    <connections>
+                        <segue destination="kn0-go-oAa" kind="show" identifier="ListToDetail" id="aMc-bF-BO9"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4TJ-9x-Ghf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="452" y="131"/>
+        </scene>
+        <!--QQDetailVC-->
+        <scene sceneID="sEx-Ya-uEx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="QQDetailVC" id="kn0-go-oAa" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NIs-5T-8yF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1286" y="132"/>
+        </scene>
+    </scenes>
+</document>

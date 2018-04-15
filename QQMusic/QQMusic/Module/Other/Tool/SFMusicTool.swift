@@ -22,6 +22,8 @@
 import UIKit
 import AVFoundation
 
+let kPlayerFinished = "kPlayerFinished"
+
 class SFMusicTool: NSObject {
     
     var player: AVAudioPlayer?
@@ -67,6 +69,7 @@ extension SFMusicTool {
         guard let player = try? AVAudioPlayer(contentsOf: url) else {
             return nil
         }
+        player.delegate = self
         self.player = player
         
         player.play()
@@ -95,5 +98,15 @@ extension SFMusicTool {
     /// - Parameter currentTime: 指定时间
     func setCurrentTime(currentTime: TimeInterval) {
         player?.currentTime = currentTime
+    }
+}
+
+
+//MARK: - AVAudioPlayerDelegate
+extension SFMusicTool: AVAudioPlayerDelegate {
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        // 当前歌曲播放完成，自动播放下一首
+        NotificationCenter.default.post(name: NSNotification.Name(kPlayerFinished), object: nil)
     }
 }

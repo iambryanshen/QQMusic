@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class QQDetailVC: UIViewController {
     
@@ -39,6 +40,9 @@ class QQDetailVC: UIViewController {
         return QQLyricTableVC()
     }()
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 //MARK: - 系统回调
@@ -55,9 +59,14 @@ extension QQDetailVC {
         setLyricScrollView()
         // 设置progressSlider
         setProgressSlider()
-        
         // 设置界面数据
         setupOnce()
+        // UISlider添加手势，实现点击跳转进度
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(setProgress(tapGesture:)))
+        progressSlider.addGestureRecognizer(tapGesture)
+        
+        // 监听播放完成的通知
+        NotificationCenter.default.addObserver(self, selector: #selector(nextMusic(_:)), name: NSNotification.Name(rawValue: "kPlayerFinished"), object: nil)
     }
     
     /*
@@ -89,6 +98,8 @@ extension QQDetailVC {
         removeDisplayLink()
     }
 }
+
+
 
 //MARK: - 数据设置
 extension QQDetailVC {
@@ -125,6 +136,9 @@ extension QQDetailVC {
         currentTimeLabel.text = musicCurrentModel.currentTimeFormat
         lyricLabel.text = musicCurrentModel.musicModel?.lrcname
         progressSlider.value = Float(musicCurrentModel.currentTime/musicCurrentModel.totalTime)
+        if let player = SFMusicTool.share.player {
+            playOrPauseButton.isSelected = player.isPlaying
+        }
     }
 }
 
@@ -244,7 +258,7 @@ extension QQDetailVC {
     }
 }
 
-//MARK: - 业务逻辑
+//MARK: - 播放相关业务逻辑
 extension QQDetailVC {
     
     /// 播放暂停
@@ -274,7 +288,53 @@ extension QQDetailVC {
     }
 }
 
+//MARK: - 播放进度控制
 extension QQDetailVC {
+    
+    @IBAction func sliderTouchDown(_ sender: UISlider) {
+        // 添加更新进度定时器
+        removeTimer()
+    }
+    
+    @IBAction func sliderValueChange(_ sender: UISlider) {
+        
+        // 移动进度的时候调整当前显示时间
+        if let player = SFMusicTool.share.player {
+            let currentTime = TimeInterval(sender.value) * player.duration
+            currentTimeLabel.text = FormatTimeTool.getFormatTime(time: currentTime)
+        }
+    }
+    @IBAction func sliderTouchUpInside(_ sender: UISlider) {
+        
+        if let player = SFMusicTool.share.player {
+            // 改变播放器当前播放时间
+            let currentTime = TimeInterval(sender.value) * player.duration
+            SFMusicTool.share.setCurrentTime(currentTime: currentTime)
+        }
+        
+        // 移除更新进度定时器
+        addTimer()
+    }
+    
+    
+    /// 点击进度条，跳转进度
+    ///
+    /// - Parameter tapGesture: 点击手势
+    @objc
+    func setProgress(tapGesture: UITapGestureRecognizer) {
+        let point = tapGesture.location(in: progressSlider)
+        let progress = point.x / progressSlider.bounds.width
+        if let player = SFMusicTool.share.player {
+            let currentTime = TimeInterval(progress) * player.duration
+            SFMusicTool.share.setCurrentTime(currentTime: currentTime)
+            setupTimes()
+        }
+    }
+}
+
+//MARK: - 锁屏控制 和 摇一摇切换下一周
+extension QQDetailVC {
+    
     // 锁屏控制播放，暂停，上一首，下一首
     override func remoteControlReceived(with event: UIEvent?) {
         switch event?.subtype {
