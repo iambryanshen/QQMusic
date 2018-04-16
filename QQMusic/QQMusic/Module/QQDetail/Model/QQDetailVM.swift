@@ -54,7 +54,6 @@ class QQDetailVM: NSObject {
         musicCurrentModel.currentTime = SFMusicTool.share.player?.currentTime ?? 0
         musicCurrentModel.totalTime = SFMusicTool.share.player?.duration ?? 0
         musicCurrentModel.isPlaying = SFMusicTool.share.player?.isPlaying ?? false
-        musicCurrentModel.currentTime = SFMusicTool.share.player?.currentTime ?? 0
         return musicCurrentModel
     }
     

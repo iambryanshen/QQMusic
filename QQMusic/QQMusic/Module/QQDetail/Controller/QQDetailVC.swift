@@ -20,7 +20,7 @@ class QQDetailVC: UIViewController {
     
     //MARK: - 一首歌曲需要多次设置的属性
     @IBOutlet weak var currentTimeLabel: UILabel!
-    @IBOutlet weak var lyricLabel: UILabel!
+    @IBOutlet weak var lyricLabel: QQLyricLabel!
     @IBOutlet weak var progressSlider: UISlider!
     @IBOutlet weak var playOrPauseButton: UIButton!
     
@@ -134,7 +134,6 @@ extension QQDetailVC {
     func setupTimes() {
         let musicCurrentModel = QQDetailVM.share.getCurrentMusicModel()
         currentTimeLabel.text = musicCurrentModel.currentTimeFormat
-        lyricLabel.text = musicCurrentModel.musicModel?.lrcname
         progressSlider.value = Float(musicCurrentModel.currentTime/musicCurrentModel.totalTime)
         if let player = SFMusicTool.share.player {
             playOrPauseButton.isSelected = player.isPlaying
@@ -173,6 +172,7 @@ extension QQDetailVC {
     func updateLyricRow() {
         let musicCurrentModel = QQDetailVM.share.getCurrentMusicModel()
         QQDetailVM.share.getCurrentLyricRow(lyricModelArray: lyricTableVC.lyricDataSource, currentTime: musicCurrentModel.currentTime) { (row, lyricModel) in
+            
             // 歌词滚动到指定行
             self.lyricTableVC.currentLyricRow = row
             
@@ -180,6 +180,13 @@ extension QQDetailVC {
             let progressTime = musicCurrentModel.currentTime - lyricModel.startTime
             let totalTime = lyricModel.endTime - lyricModel.startTime
             self.lyricTableVC.progress = CGFloat(progressTime/totalTime)
+            
+            
+            // 歌词label赋值
+            let currentMusicModel = QQDetailVM.share.getCurrentMusicModel()
+            lyricLabel.text = lyricModel.lyricContent
+            let progress = (currentMusicModel.currentTime - lyricModel.startTime) / (lyricModel.endTime - lyricModel.startTime)
+            lyricLabel.progress = CGFloat(progress)
         }
     }
 }
