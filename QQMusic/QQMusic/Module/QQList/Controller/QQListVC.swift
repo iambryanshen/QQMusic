@@ -54,7 +54,6 @@ extension QQListVC {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = QQListCell.qqlistCell(tableView: tableView)
-        cell.music = musics[indexPath.row]
         cell.animation(animationType: CellAnimationType.scale)
         return cell
     }
@@ -66,5 +65,13 @@ extension QQListVC {
         
         QQDetailVM.share.playMusic(musicModel: musics[indexPath.row])
         self.performSegue(withIdentifier: "ListToDetail", sender: nil)
+    }
+    
+    /*
+     在willDisplayCell: forRowAtIndexPath:的时候绑定数据（赋值）。优化TableView性能
+     */
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cell = cell as? QQListCell
+        cell?.music = musics[indexPath.row]
     }
 }
